@@ -16,7 +16,7 @@ print(my_dict['list'])
 # Для того, что хранится под ключом ‘dict’:
 # добавьте элемент с ключом ('i am a tuple',) и любым значением,
 # удалите какой-нибудь элемент
-my_dict['dict']['new_element'] = 999
+my_dict['dict'][('i am a tuple',)] = 999
 my_dict['dict'].pop('b')
 print(my_dict['dict'])
 
