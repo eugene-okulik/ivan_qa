@@ -5,9 +5,10 @@ person = ['John', 'Doe', 'New York', '+1372829383739', 'US']
 
 name = person[0]
 last_name = person[1]
-phone = person[2]
-city = person[3]
+phone = person[3]
+city = person[2]
 country = person[4]
+print(f'Name: {name}, Last Name: {last_name}, Phone: {phone}, City: {city}, Country: {country}')
 
 
 # Задание 2
@@ -45,7 +46,7 @@ subjects = ['math', 'biology', 'geography']
 print(
     f'Students {students[0]}, {students[1]}, {students[2]}',
     f'study these subjects: {subjects[0]}, {subjects[1]}, {subjects[2]}'
-    )
+)
 
 # второй вариант выглядит лучше на мой взгляд
 students_str = ', '.join(students)
