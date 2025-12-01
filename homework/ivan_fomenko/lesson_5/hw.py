@@ -2,7 +2,6 @@ person = ['John', 'Doe', 'New York', '+1372829383739', 'US']
 
 # Задание 1
 # распаковка списка person в переменные:
-# name, last_name, city, phone, country
 
 name = person[0]
 last_name = person[1]
@@ -43,7 +42,10 @@ students = ['Ivanov', 'Petrov', 'Sidorov']
 subjects = ['math', 'biology', 'geography']
 
 # первый пришедший вариант, показался не универсальным
-print(f'Students {students[0]}, {students[1]}, {students[2]} study these subjects: {subjects[0]}, {subjects[1]}, {subjects[2]}')
+print(
+    f'Students {students[0]}, {students[1]}, {students[2]}',
+    f'study these subjects: {subjects[0]}, {subjects[1]}, {subjects[2]}'
+    )
 
 # второй вариант выглядит лучше на мой взгляд
 students_str = ', '.join(students)
