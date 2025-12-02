@@ -3,13 +3,18 @@ person = ['John', 'Doe', 'New York', '+1372829383739', 'US']
 # Задание 1
 # распаковка списка person в переменные:
 
-name = person[0]
-last_name = person[1]
-phone = person[3]
-city = person[2]
-country = person[4]
-print(f'Name: {name}, Last Name: {last_name}, Phone: {phone}, City: {city}, Country: {country}')
+# не универсальный вариант. Остаивл для истории
 
+# name = person[0]
+# last_name = person[1]
+# phone = person[3]
+# city = person[2]
+# country = person[4]
+# print(f'Name: {name}, Last Name: {last_name}, Phone: {phone}, City: {city}, Country: {country}')
+
+# универсальный вариант распаковки списка
+name, last_name, city, phone, country = person
+print(f'Name: {name}, Last Name: {last_name}, Phone: {phone}, City: {city}, Country: {country}')
 
 # Задание 2
 # Получить число из строки
