@@ -5,8 +5,9 @@
 # если идет запятая или точка после слова, то знак идет после "ing"
 
 
-my_string = ("Etiam tincidunt neque erat, quis molestie enim imperdiet vel. "
-             "Integer urna nisl, facilisis vitae semper at, dignissim vitae libero"
+my_string = (
+    "Etiam tincidunt neque erat, quis molestie enim imperdiet vel. "
+    "Integer urna nisl, facilisis vitae semper at, dignissim vitae libero"
 )
 
 # вариант с использованием печати внутри цикла
