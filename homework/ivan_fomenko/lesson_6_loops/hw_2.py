@@ -15,4 +15,3 @@ for number in range(1, 101):
         print('Fuzz', end=' ')
     else:
         print(number, end=' ')
-
