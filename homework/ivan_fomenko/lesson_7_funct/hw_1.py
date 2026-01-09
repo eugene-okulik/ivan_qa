@@ -16,4 +16,5 @@ def ugadaika(SECRET_NUMBER):
         else:
             print("попробуйте снова")
 
+
 ugadaika(SECRET_NUMBER)
