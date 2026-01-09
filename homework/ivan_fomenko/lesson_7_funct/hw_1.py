@@ -6,10 +6,11 @@
 
 SECRET_NUMBER = 7
 
+
 def ugadaika(SECRET_NUMBER):
     while True:
         user_try = int(input("Угадайте цифру: "))
-        if user_try == secret_number:
+        if user_try == SECRET_NUMBER:
             print("Поздравляю! Вы угадали!")
             break
         else:
