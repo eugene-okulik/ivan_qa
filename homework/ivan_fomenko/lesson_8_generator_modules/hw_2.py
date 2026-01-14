@@ -1,5 +1,5 @@
 def fibonachi_numbers():
-    f1_num= 0
+    f1_num = 0
     f2_num = 1
     while True:
         f3_num = f1_num + f2_num
@@ -17,10 +17,7 @@ for number in fibonachi_numbers():
     elif count == 1000:
         print(number)
     elif count == 100000:
-        print(len(str(number)))
+        # при печати выбивает ошибку из за ограничения длины строки
+        print(number)
         break
     count += 1
-    
-
-
-
