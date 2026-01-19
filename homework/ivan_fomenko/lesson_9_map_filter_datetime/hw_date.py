@@ -12,4 +12,5 @@ print(date_human_month)
 
 # Распечатайте дату в таком формате: "15.01.2023, 12:05"
 date_human_format = date_python.strftime('%y.%m.%Y, %H:%M')
+
 print(date_human_format)
