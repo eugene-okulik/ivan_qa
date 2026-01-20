@@ -4,6 +4,12 @@ temperatures = [
     33, 31, 30, 32, 30, 28, 24, 23
 ]
 
+# min max температура
+max_tempereture = max(temperatures)
+min_tempereture = min(temperatures)
+
+print(f'Максимальная температура {max_tempereture}')
+print(f'Минимальная температура {min_tempereture}')
 
 # для себя написал черновой вариант
 list_temp = []
