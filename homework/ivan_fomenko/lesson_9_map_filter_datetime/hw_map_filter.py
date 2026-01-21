@@ -4,12 +4,6 @@ temperatures = [
     33, 31, 30, 32, 30, 28, 24, 23
 ]
 
-# min max температура
-max_tempereture = max(temperatures)
-min_tempereture = min(temperatures)
-
-print(f'Максимальная температура {max_tempereture}')
-print(f'Минимальная температура {min_tempereture}')
 
 # для себя написал черновой вариант
 list_temp = []
@@ -34,3 +28,9 @@ print(f'список через map {list(hot_days_map)}')
 # FILTER
 hot_days_filter = list(filter(lambda x: x > 28, temperatures))
 print(f'список через filter {hot_days_filter}')
+
+
+# min max avg temperature
+print(f'Самая высокая температура в жарких днях: {max(hot_days_filter)}')
+print(f'Самая низкая температура в жарких днях: {min(hot_days_filter)}')
+print(f'Средняя температура в жарких днях: {round(sum(hot_days_filter) / len(hot_days_filter), 2)}')
