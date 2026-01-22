@@ -27,17 +27,14 @@ def repeat_me(count=1):
     # сюда приходит count из декоратора
     # если count не передан, то = 1
 
-
     def decorator_func(func):
         # фактически декоратор сам
         # func это декорируемая функция
-
 
         def wrapper(*args, **kwargs):
             # вызываем wrapper вместо нашей example функции
             # args - позиционные аргументы, типа text
             # kwargs - именнованные аргументы типа count
-
 
             # Берём count:
             # 1) если count передали при вызове example(..., count=2), то берём его
@@ -45,7 +42,6 @@ def repeat_me(count=1):
             # pop нужен, чтобы удалить count из kwargs,
             # иначе func() получит лишний аргумент и упадёт
             call_count = kwargs.pop('count', count)
-
 
             # Запускаем функцию нужно кол-во раз
             for x in range(call_count):
@@ -57,7 +53,7 @@ def repeat_me(count=1):
 @repeat_me(count=2)
 def example(text):
     print(text)
-    
+
 
 example('print me')
 example('print me', count=2)
