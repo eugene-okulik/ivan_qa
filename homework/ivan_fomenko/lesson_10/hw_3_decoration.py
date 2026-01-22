@@ -1,5 +1,5 @@
 # Задание на декораторы 3
-# Напишите программу: Есть функция которая делает одну из арифметических операций с переданными 
+# Напишите программу: Есть функция которая делает одну из арифметических операций с переданными
 # ей числами (числа и операция передаются в аргументы функции). Функция выглядит примерно так:
 
 # def calc(first, second, operation):
@@ -19,29 +19,24 @@ first = int(input('Введите первое число: '))
 second = int(input('Введите второе число: '))
 # operation = input('Введите арифимитечкий оператор: ')
 
+
 def choice_operator(func):
-    def wrapper(first, second, operation):
+    def wrapper(first, second):
         if first < 0 or second < 0:
             operation = '*'
-            result = func(first, second, operation)
-            return result
-        elif first > second:
-            operation = '-'
-            result = func(first, second, operation)
-            return result
-        elif first < second:
-            operation = '/'
-            result = func(first, second, operation)
-            return result
+            return func(first, second, operation)
         elif first == second:
             operation = '+'
-            result = func(first, second, operation)
-            return result
+            return func(first, second, operation)
+        elif first > second:
+            operation = '-'
+            return func(first, second, operation)
+        elif first < second:
+            operation = '/'
+            return func(first, second, operation)
         else:
             print('Для таких чисел нет арифмитического действия')
     return wrapper
-
-
 
 
 @choice_operator
@@ -51,10 +46,11 @@ def calc(first, second, operation):
     elif operation == '-':
         return first - second
     elif operation == '/':
-        return second / first
+        return first / second
     elif operation == '*':
         return first * second
     else:
         print('Не знаю такого оператора')
+
 
 print(calc(first, second, ''))
