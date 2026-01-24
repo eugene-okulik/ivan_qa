@@ -86,15 +86,13 @@ class SchoolBooks(Book):
             reserved,
             school_predmet,
             school_class,
-            school_homework
-            ):
+            school_homework):
         super().__init__(
             book_name,
             author,
             pages,
             ISBN,
-            reserved
-            )
+            reserved)
         self.school_predmet = school_predmet
         self.school_class = school_class
         self.school_homework = school_homework
