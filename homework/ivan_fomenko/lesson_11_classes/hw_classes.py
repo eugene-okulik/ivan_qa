@@ -9,7 +9,7 @@ class Book:
             pages,
             ISBN,
             reserved
-            ):
+):
         self.book_name = book_name
         self.author = author
         self.pages = pages
@@ -24,7 +24,7 @@ Dostoevskyi_idiot = Book(
     350,
     '978-5-94708-243-2',
     True
-    )
+)
 
 Tolkien_lord_of_the_ring = Book(
     'LOR',
@@ -32,7 +32,7 @@ Tolkien_lord_of_the_ring = Book(
     1500,
     '978-5-17-106077-0',
     False
-    )
+)
 
 Chehov_toska = Book(
     'Toska',
@@ -40,7 +40,7 @@ Chehov_toska = Book(
     550,
     '888-5-94708-243-8',
     False
-    )
+)
 
 Gogol_igroki = Book(
     'Igroki',
@@ -48,7 +48,7 @@ Gogol_igroki = Book(
     1050,
     '777-5-94708-243-8',
     False
-    )
+)
 
 Pushin_osen = Book(
     'Osen',
@@ -56,7 +56,7 @@ Pushin_osen = Book(
     2110,
     '111-5-94708-243-2',
     True
-    )
+)
 
 # создаю список из книг
 books_list = [Dostoevskyi_idiot, Tolkien_lord_of_the_ring, Chehov_toska, Gogol_igroki, Pushin_osen]
@@ -85,14 +85,14 @@ class SchoolBooks(Book):
             school_predmet,
             school_class,
             school_homework
-            ):
+):
         super().__init__(
             book_name,
             author,
             pages,
             ISBN,
             reserved
-            )
+)
         self.school_predmet = school_predmet
         self.school_class = school_class
         self.school_homework = school_homework
@@ -108,7 +108,7 @@ school_book_first = SchoolBooks(
     'Математика',
     '7 класс',
     False
-    )
+)
 
 school_book_second = SchoolBooks(
     'История для школьников',
@@ -119,7 +119,7 @@ school_book_second = SchoolBooks(
     'История',
     '10 класс',
     True
-    )
+)
 
 school_book_list = [school_book_first, school_book_second]
 
