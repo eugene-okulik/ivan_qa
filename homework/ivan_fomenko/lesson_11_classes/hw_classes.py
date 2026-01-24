@@ -22,43 +22,44 @@ Dostoevskyi_idiot = Book(
     'Dostoevskyi',
     350,
     '978-5-94708-243-2',
-    True
-    )
+    True)
 
 Tolkien_lord_of_the_ring = Book(
     'LOR',
     'Tolkien',
     1500,
     '978-5-17-106077-0',
-    False
-    )
+    False)
 
 Chehov_toska = Book(
     'Toska',
     'Chehov',
     550,
     '888-5-94708-243-8',
-    False
-    )
+    False)
 
 Gogol_igroki = Book(
     'Igroki',
     'Gogol',
     1050,
     '777-5-94708-243-8',
-    False
-    )
+    False)
 
 Pushin_osen = Book(
     'Osen',
     'Pushkin',
     2110,
     '111-5-94708-243-2',
-    True
-    )
+    True)
 
 # создаю список из книг
-books_list = [Dostoevskyi_idiot, Tolkien_lord_of_the_ring, Chehov_toska, Gogol_igroki, Pushin_osen]
+books_list = [
+    Dostoevskyi_idiot,
+    Tolkien_lord_of_the_ring,
+    Chehov_toska,
+    Gogol_igroki,
+    Pushin_osen
+]
 
 # print в зависимости от reserved
 for book in books_list:
@@ -107,8 +108,7 @@ school_book_first = SchoolBooks(
     False,
     'Математика',
     '7 класс',
-    False
-    )
+    False)
 
 school_book_second = SchoolBooks(
     'История для школьников',
