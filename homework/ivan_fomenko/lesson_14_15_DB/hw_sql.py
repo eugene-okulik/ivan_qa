@@ -64,7 +64,7 @@ WHERE id = {student_id};'''
 cursor.execute(
     assign_group_query.
     format(group_id=group_id, student_id=student_id)
-    )
+)
 print(cursor.lastrowid)
 print(f'Студент с id {student_id} добавлен в группу с id {group_id}')
 
