@@ -23,8 +23,8 @@ cursor = db.cursor(dictionary=True)
 
 # добавляем студента
 add_student_query = '''
-INSERT INTO students (name, second_name, group_id)
-VALUES ('Гриба', 'Бас', 1);
+INSERT INTO students (name, second_name)
+VALUES ('Гриба', 'Бас');
 '''
 cursor.execute(add_student_query)
 student_id = cursor.lastrowid
@@ -32,19 +32,16 @@ print(f'Добавлен студент с id: {student_id}')
 
 
 # добавляем книги студенту
-add_book_query_1 = '''
+books_to_add = [
+    ('Грибы в лесу', student_id),
+    ('Энциклопедия грибника', student_id)
+]
+query_books = '''
 INSERT INTO books (title, taken_by_student_id)
-VALUES ('Анегдоты про грибы', {student_id});'''
-cursor.execute(add_book_query_1.format(student_id=student_id))
-book_1_id = cursor.lastrowid
-print(f'Добавлена первая книга с id: {book_1_id}')
-
-add_book_query_2 = '''
-INSERT INTO books (title, taken_by_student_id)
-VALUES ('Грибы в лесу', {student_id});'''
-cursor.execute(add_book_query_2.format(student_id=student_id))
-book_2_id = cursor.lastrowid
-print(f'Добавлена вторая книга с id: {book_2_id}')
+VALUES (%s, %s);
+'''
+cursor.executemany(query_books, books_to_add)
+print(f'Добавлено {cursor.rowcount} книги студенту с id: {student_id}')
 
 
 # добавляем группу
@@ -119,37 +116,47 @@ print(f'Добавлен урок с id: {lesson_4_id}, для предмета 
 
 
 # ставим оценки студенту за эти уроки
-add_mark_query_1 = '''
-INSERT INTO marks (value, lesson_id, student_id)
-VALUES (10, {lesson_id}, {student_id});'''
-cursor.execute(
-    add_mark_query_1.format(lesson_id=lesson_1_id, student_id=student_id)
-)
+list_of_mark = [
+    (10, student_id, lesson_1_id),
+    (9, student_id, lesson_2_id),
+    (8, student_id, lesson_3_id),
+    (7, student_id, lesson_4_id)
+]
+add_mark_query = '''
+INSERT INTO marks (value, student_id, lesson_id)
+VALUES (%s, %s, %s);'''
+cursor.executemany(add_mark_query, list_of_mark)
 
-add_mark_query_2 = '''
-INSERT INTO marks (value, lesson_id, student_id)
-VALUES (9, {lesson_id}, {student_id});'''
-cursor.execute(
-    add_mark_query_2.
-    format(lesson_id=lesson_2_id, student_id=student_id)
-)
 
-add_mark_query_3 = '''
-INSERT INTO marks (value, lesson_id, student_id)
-VALUES (8, {lesson_id}, {student_id});
+# выводим всю информацию по студенту
+all_information_about_student = '''
+SELECT
+    s.name AS name,
+    s.second_name AS last_name,
+    g.title AS group_name,
+    b.title AS took_book,
+    l.id  AS lesson_id,
+    l.title AS lessons,
+    m.value AS marks
+FROM students AS s
+JOIN `groups` AS g
+    ON s.group_id = g.id
+LEFT JOIN books AS b
+    ON b.taken_by_student_id = s.id
+LEFT JOIN marks AS m
+    ON m.student_id = s.id
+LEFT JOIN lessons AS l
+    ON l.id = m.lesson_id
+WHERE s.id = {student_id};
 '''
-cursor.execute(
-    add_mark_query_3.
-    format(lesson_id=lesson_3_id, student_id=student_id)
-)
 
-add_mark_query_4 = '''
-INSERT INTO marks (value, lesson_id, student_id)
-VALUES (7, {lesson_id}, {student_id});
-'''
 cursor.execute(
-    add_mark_query_4.format(lesson_id=lesson_4_id, student_id=student_id)
+    all_information_about_student.
+    format(student_id=student_id)
 )
+result = cursor.fetchall()
+for row in result:
+    print(row)
 
 db.commit()
 
