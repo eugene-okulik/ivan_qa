@@ -1,0 +1,59 @@
+-- создаю студента
+INSERT INTO students (name, second_name) VALUES ('Bar', 'Suk');
+
+-- проверяю что создался
+SELECT * FROM students WHERE name = 'Bar' OR name = 'Soba'
+
+-- добавляю книги
+INSERT INTO books (title, taken_by_student_id) VALUES ('Cat is evil', 22202)
+INSERT INTO books (title, taken_by_student_id) VALUES ('Dog is evil', 22202)
+
+-- добавляю группу
+INSERT INTO `groups` (title, start_date, end_date) VALUES ('Good boys', 'today', 'forever')
+
+-- записываю студентв в эту группу
+UPDATE students SET group_id = 21914 WHERE id = 22202
+
+-- создаю subject 
+INSERT INTO subjects (title) VALUES ('not_a_magic_trick')
+INSERT INTO subjects (title) VALUES ('magic_trick')
+
+-- создаю ПО 2 зsubjectsанятия для КАЖДОГО lesson
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_1', 13693)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_2', 13693)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_3', 13692)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_4', 13692)
+
+-- ставлю оценки студенту
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('5', '74533', '22202')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('10', '74534', '22202')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('5', '74535', '22202')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('5', '74536', '22202')
+
+
+
+-- смотрим оценки студента
+SELECT * FROM marks WHERE student_id = 22202
+
+-- смотрим книги студента
+SELECT * FROM books WHERE taken_by_student_id = 22202
+
+-- смотрим всю информацию о студенте
+SELECT 
+	s.name AS name,
+	s.second_name AS last_name,
+	g.title AS group_name,
+	b.title AS took_book,
+	l.id  AS lesson_id,
+	l.title AS lessons,
+	m.value AS marks
+FROM students AS s 
+JOIN `groups` AS g 
+	ON s.group_id = g.id 
+LEFT JOIN books AS b
+	ON b.taken_by_student_id = s.id
+LEFT JOIN marks AS m
+	ON m.student_id = s.id
+LEFT JOIN lessons AS l
+	ON l.id = m.lesson_id 
+WHERE s.id = 22202;
