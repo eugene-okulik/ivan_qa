@@ -22,7 +22,7 @@ base_path = os.path.dirname((__file__))
 homework_path = os.path.dirname(os.path.dirname(base_path))
 eugene_path = os.path.join(
     homework_path, 'eugene_okulik', 'lesson_16', 'hw_data', 'data.csv'
-    )
+)
 
 
 # читаем csv файл
