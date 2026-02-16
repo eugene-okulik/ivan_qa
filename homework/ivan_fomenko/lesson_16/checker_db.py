@@ -27,7 +27,7 @@ def check_student_in_db(student_info_list, cursor):
             'message': (
                 f'Студент {name} {second_name}'
                 f'найден в таблице students'
-)
+            )
         })
     else:
         results['checks'].append({
@@ -36,7 +36,7 @@ def check_student_in_db(student_info_list, cursor):
             'message': (
                 f'Студент {name} {second_name}'
                 f'не найден в таблице students'
-)
+            )
         })
         return results  # Нет смысла проверять остальное, если студента нет
 
@@ -139,7 +139,7 @@ def print_check_results(check_result):
     student_name = check_result['student_name']
     failed_checks = [
         check for check in check_result['checks'] if not check['passed']
-]
+    ]
 
     print(f"\n{'='*60}")
     print(f"Студент: {student_name}")
@@ -154,7 +154,7 @@ def print_check_results(check_result):
         print(
             f"\nДля студента {student_name}",
             f"не были найдены данные: {failed_names}"
-)
+        )
     else:
         print(f"\nВсе проверки пройдены успешно для {student_name}")
     print(f"{'='*60}\n")
