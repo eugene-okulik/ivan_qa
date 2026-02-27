@@ -51,11 +51,13 @@ def test_get_all_obj(inf_test, inf_start_end):
 
 
 @pytest.mark.parametrize(
-        "name, age, city", [
+        "name, age, city",
+        [
             ("Ivan", 30, "London"),
             ("Maria", 29, "Belgrade"),
-            ("Mark", 46, "Sindey")]
-        )
+            ("Mark", 46, "Sindey")
+        ]
+)
 def test_create_obj(inf_test, name, age, city):
     body = {
         "name": name,
