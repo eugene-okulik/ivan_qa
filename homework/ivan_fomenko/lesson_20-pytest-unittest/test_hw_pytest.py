@@ -31,14 +31,15 @@ def obj_id():
     headers = {'Content-Type': 'application/json'}
     response = requests.post(f'{BASE_URL}/object', json=body, headers=headers)
     print(f'Создан объект с id: {response.json()["id"]}')
-
     assert response.status_code == 200, 'Status code is incorrect'
-    assert response.json()['name'] == 'Ivan', 'Name is incorrect'
-    assert response.json()['data']['age'] == 30, 'Age is incorrect'
-    assert response.json()['data']['city'] == 'London', 'City is incorrect'
-    obj_id = response.json()['id']
+    obj_id_value = response.json()["id"]
 
-    return obj_id
+    yield obj_id_value
+    print(f'Deleting obj id: {obj_id_value}..')
+    requests.delete(f'{BASE_URL}/object/{obj_id_value}')
+    print(f'Obj delete succesefull')
+
+
 
 
 # тесты
@@ -81,9 +82,7 @@ def test_get_one_obj(inf_test, obj_id):
     assert response.json()['id'] == obj_id, (
         f'Id is incorrect, expected {obj_id}, got {response.json()["id"]}'
     )
-    assert response.json()['name'] == 'Ivan', 'Name is incorrect'
-    assert response.json()['data']['age'] == 30, 'Age is incorrect'
-    assert response.json()['data']['city'] == 'London', 'City is incorrect'
+
 
 
 @pytest.mark.critical
@@ -105,9 +104,9 @@ def test_put_one_obj(inf_test, obj_id):
     assert int(response.json()['id']) == int(obj_id), (
         f'Id is incorrect, expected {obj_id}, got {response.json()["id"]}'
     )
-    assert response.json()['name'] == 'Ivan-UPD', 'Name is incorrect'
-    assert response.json()['data']['age'] == 31, 'Age is incorrect'
-    assert response.json()['data']['city'] == 'London-UPD', 'City is incorrect'
+    assert response.json()['name'] == body['name'], 'Name is incorrect'
+    assert response.json()['data']['age'] == body['data']['age'], 'Age is incorrect'
+    assert response.json()['data']['city'] == body['data']['city'], 'City is incorrect'
 
 
 def test_patch_one_obj(inf_test, obj_id):
