@@ -37,9 +37,7 @@ def obj_id():
     yield obj_id_value
     print(f'Deleting obj id: {obj_id_value}..')
     requests.delete(f'{BASE_URL}/object/{obj_id_value}')
-    print(f'Obj delete succesefull')
-
-
+    print(f'Obj id:{obj_id_value} delete succesefull')
 
 
 # тесты
@@ -82,7 +80,6 @@ def test_get_one_obj(inf_test, obj_id):
     assert response.json()['id'] == obj_id, (
         f'Id is incorrect, expected {obj_id}, got {response.json()["id"]}'
     )
-
 
 
 @pytest.mark.critical
