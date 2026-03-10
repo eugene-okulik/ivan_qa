@@ -30,9 +30,8 @@ def test_create_obj(create_obj_api, name, age, city):
 @pytest.mark.skip(reason="всегда возвращает 200, баг в API")
 def test_create_obj_negative(create_obj_api, delete_obj_api, name, age, city):
     response, obj_id = create_obj_api.create_obj(name, age, city)
-    
+
     Checker.check_create_obj_negative(response)
     # clean up
     delete_response = delete_obj_api.delete_obj(obj_id)
     Checker.check_delete_obj(delete_response, obj_id=obj_id)
-
