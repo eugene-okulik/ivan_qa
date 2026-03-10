@@ -6,7 +6,7 @@ from endpoints.main_class import MainApi
 class CreateObj(MainApi):
 
     @allure.step('Send POST to create object')
-    def api_create_obj(self, name='Ivan', age=20, city='Budva', headers=None):
+    def create_obj(self, name='Ivan', age=20, city='Budva', headers=None):
         body = {
             "name": name,
             "data": {
@@ -18,5 +18,5 @@ class CreateObj(MainApi):
         self.response = requests.post(
             f'{self.BASE_URL}object', json=body, headers=headers
         )
-
-        return self.response
+        obj_id = self.response.json().get('id')
+        return self.response, obj_id
