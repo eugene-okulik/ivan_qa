@@ -35,3 +35,12 @@ def put_obj_api():
 @pytest.fixture(scope='function')
 def patch_obj_api():
     return PatchObj()
+
+
+@pytest.fixture(scope='function')
+def created_obj(create_obj_api, delete_obj_api):
+    response, obj_id = create_obj_api.create_obj()
+
+    yield obj_id
+
+    delete_obj_api.delete_obj(obj_id)
