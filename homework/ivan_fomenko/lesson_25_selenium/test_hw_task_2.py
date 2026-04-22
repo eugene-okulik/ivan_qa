@@ -74,8 +74,8 @@ def test_fill_form(driver):
         EC.text_to_be_present_in_element(
             (By.ID, 'example-modal-sizes-title-lg'),
             'Thanks for submitting the form'
-            )
         )
+    )
 
     CHECK_RESULT = wait.until(
         EC.presence_of_element_located((By.ID, 'example-modal-sizes-title-lg'))
