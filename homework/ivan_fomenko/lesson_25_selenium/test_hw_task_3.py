@@ -21,9 +21,9 @@ def test_clicking(driver):
     driver.get("https://www.qa-practice.com/elements/select/single_select")
 
     # find selector
-    CHOOSE_LANG = driver.find_element(By.ID, 'id_choose_language')
-    SELECT = Select(CHOOSE_LANG)
-    SELECT.select_by_visible_text('JavaScript')
+    choose_lang = driver.find_element(By.ID, 'id_choose_language')
+    select = Select(choose_lang)
+    select.select_by_visible_text('JavaScript')
 
     # submit
     driver.find_element(By.CSS_SELECTOR, "input[name='submit']").click()
@@ -41,8 +41,8 @@ def test_check_start_btn(driver):
     driver.get('https://the-internet.herokuapp.com/dynamic_loading/2')
 
     # start btn
-    START_BTN = driver.find_element(By.CSS_SELECTOR, '#start button')
-    START_BTN.click()
+    start_btn = driver.find_element(By.CSS_SELECTOR, '#start button')
+    start_btn.click()
 
     # wait until end
     wait.until(EC.text_to_be_present_in_element(
@@ -50,5 +50,5 @@ def test_check_start_btn(driver):
         "Hello World!")
     )
 
-    FINISH_TEXT = driver.find_element(By.XPATH, "//div[@id='finish']/h4")
-    assert FINISH_TEXT.text == 'Hello World!'
+    finish_text = driver.find_element(By.XPATH, "//div[@id='finish']/h4")
+    assert finish_text.text == 'Hello World!'

@@ -11,15 +11,15 @@ driver.get('https://www.qa-practice.com/elements/input/simple')
 
 TEST_TEXT = 'Hello_world'
 
-TEXT_AREA = driver.find_element(By.ID, 'id_text_string')
-TEXT_AREA.send_keys(TEST_TEXT)
-TEXT_AREA.submit()
+text_area = driver.find_element(By.ID, 'id_text_string')
+text_area.send_keys(TEST_TEXT)
+text_area.submit()
 
-RESULT_TEXT = driver.find_element(By.ID, 'result-text').text
-print(f'Был введен текст: {RESULT_TEXT}')
+result_text = driver.find_element(By.ID, 'result-text').text
+print(f'Был введен текст: {result_text}')
 
-assert RESULT_TEXT == TEST_TEXT, (
+assert result_text == TEST_TEXT, (
     'Текст некорректный\n'
     f'Ожидаемый текст {TEST_TEXT}\n'
-    f'Полученный текст {RESULT_TEXT}'
+    f'Полученный текст {result_text}'
 )

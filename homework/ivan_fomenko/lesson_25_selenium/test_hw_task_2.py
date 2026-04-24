@@ -39,10 +39,10 @@ def test_fill_form(driver):
     ).send_keys('1234567890')
 
     # subj, hobbie, address
-    SUBJECT_FIELD = driver.find_element(
+    subject_field = driver.find_element(
         By.ID, 'subjectsInput')
-    SUBJECT_FIELD.send_keys('Maths')
-    SUBJECT_FIELD.send_keys(Keys.ENTER)
+    subject_field.send_keys('Maths')
+    subject_field.send_keys(Keys.ENTER)
 
     # hobbies, address
     driver.find_element(
@@ -53,11 +53,11 @@ def test_fill_form(driver):
     ).send_keys('ул. Пушкина. Дом колотушкина')
 
     # state
-    STATE = driver.find_element(
+    state = driver.find_element(
         By.ID, 'react-select-3-input'
     )
-    driver.execute_script("arguments[0].scrollIntoView(true);", STATE)
-    STATE.send_keys('NCR', Keys.ENTER)
+    driver.execute_script("arguments[0].scrollIntoView(true);", state)
+    state.send_keys('NCR', Keys.ENTER)
 
     # city
     driver.find_element(
@@ -77,10 +77,10 @@ def test_fill_form(driver):
         )
     )
 
-    CHECK_RESULT = wait.until(
+    check_result = wait.until(
         EC.presence_of_element_located((By.ID, 'example-modal-sizes-title-lg'))
     )
-    assert CHECK_RESULT.text == 'Thanks for submitting the form'
+    assert check_result.text == 'Thanks for submitting the form'
 
     # печатаем результат
     rows = wait.until(
@@ -89,7 +89,6 @@ def test_fill_form(driver):
         )
     )
 
-    # print(f'что это {rows}')
     result_data = {}
     for row in rows:
         cells = row.find_elements(By.TAG_NAME, 'td')
