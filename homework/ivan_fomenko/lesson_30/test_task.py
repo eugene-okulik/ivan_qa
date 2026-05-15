@@ -20,7 +20,4 @@ def test_iphone_17(page: Page):
     page.locator('button', has_text='iPhone 17 Pro Max').click()
     test_locator = page.locator('[data-autom="DigitalMat-overlay-header-0-0"]')
     print(test_locator.text_content())
-    expect(
-        page.locator(
-            '[data-autom="DigitalMat-overlay-header-0-0"]')
-        ).to_have_text('Яблокофон 17 Про')
+    expect(test_locator).to_have_text('Яблокофон 17 Про')
