@@ -27,8 +27,7 @@ def test_customezied_desk(desk_page):
 
 
 @pytest.mark.xfail(
-        reason="Тест падает иногда из-за глючности сайта. Проходит 50 на 50."
-)
+        reason="Тест падает иногда из-за глючности сайта. Проходит 50 на 50.")
 def test_check_customization_desk(desk_page):
     desk_page.open_page()
     desk_page.customization_desk(
