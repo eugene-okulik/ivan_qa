@@ -1,0 +1,6 @@
+breadcrumbs = ("//ol[contains(@class, 'breadcrumb')]")
+name_of_product = ("[itemprop='name']")
+price_of_product = (".oe_price")
+add_to_cart = ("#add_to_cart")
+btn_view_cart = ("//a[contains(text(), 'View cart')]")
+product_in_cart = ("#cart_products")
